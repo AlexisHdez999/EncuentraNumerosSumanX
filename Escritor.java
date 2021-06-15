@@ -8,10 +8,26 @@ import java.io.*;
 
 public class Escritor{
 
+	public static ArrayList<String> lectura(String name){
+		ArrayList<String> array = new ArrayList<>() ;
+		try {
+			File myObj = new File(name);
+			Scanner myReader = new Scanner(myObj);
+			while (myReader.hasNextLine()) {
+				String data = myReader.nextLine();
+				array.add(data) ;
+			}
+			myReader.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("An error occurred.");
+			e.printStackTrace();
+		}
+		return array ;
+	}
     
      /** Método para escribir un archivo
      *@param lista - lista de numeros a escribir
-     *@param String - nombre del archivo que se desea escribir
+     *@param nombre - nombre del archivo que se desea escribir
      */    
     public static void escritura(ArrayList<Numeros> lista, String nombre){
 	File archivo = null ;
