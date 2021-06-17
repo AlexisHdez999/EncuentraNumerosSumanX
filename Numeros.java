@@ -51,7 +51,7 @@ public class Numeros {
             s += n + ", ";
         }
         String s2 = s.substring(0, s.length() - 2);
-        return s2 + "\n";
+        return s2 + " =" +  suma + "\n";
     }
 
     /**
@@ -62,6 +62,9 @@ public class Numeros {
     public boolean equals(Object no) {
         Numeros n = (Numeros) no;
         LinkedList<Integer> l = n.getLista();
+        if(l.size() != lista.size()){
+            return false ;
+        }
         for (int i : l) {
             if (lista.contains(i)) {
                 continue;
@@ -106,7 +109,6 @@ public class Numeros {
     public static Numeros crearNuevo(Numeros n1, Numeros n2){
         LinkedList<Integer> a = new LinkedList<>(n1.getLista()) ;
         a.addAll(n2.getLista()) ;
-        System.out.println(" la lista creada nueva " + a);
         int sum = n1.getSuma() + n2.getSuma() ;
         return new Numeros(a,sum) ;
     }
