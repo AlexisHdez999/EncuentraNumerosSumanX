@@ -1,5 +1,4 @@
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class Main {
@@ -150,7 +149,6 @@ public class Main {
             }
         }
         a3 = filtraIncompleto(a3) ;
-        System.out.println("la lista después de combinar " + a3);
 
         return a3 ;
     }
@@ -160,32 +158,26 @@ public class Main {
         Hashtable<Integer, ArrayList<Numeros>> ht= new Hashtable<>() ;
         for(Numeros n : arrayCreciente){
             if(!ht.containsKey(n.getSuma())){
-              // System.out.println("agregando n " + n);
                 ArrayList<Numeros> a2 = new ArrayList<Numeros>() ;
                 a2.add(n) ;
                 ht.put(n.getSuma(), a2) ;
             } else {
                 ArrayList<Numeros> a = ht.get(n.getSuma()) ;
                 a.add(n) ;
-               // ht.put(n.getSuma(), a) ;
-              //  System.out.println("imprimiendo el valor despu+es de agregar otro numero " + ht.get(n.getSuma()));
+
             }
         }
-        System.out.println("tamaño del arreglo inicial " + array.size());
-        System.out.println("tamaño del diccionario " + ht.size());
-        //System.out.println("imprimiendo el diccionario " + ht);
+
         for(int i = 0 ; i < array.size() ;i++){
             Numeros nArray = array.get(i) ;
             int restoSuma = suma - nArray.getSuma() ;
-           // System.out.println("imprimiendo i " + i + " tamaño array " + array.size());
+
             if(ht.containsKey(restoSuma)){
                 ArrayList<Numeros> arrayNum = ht.get(restoSuma) ;
-             //   System.out.println("imprimiendo restoSuma " + restoSuma + " arrayNum " + arrayNum + " valor nArray " + nArray);
-                System.out.println("tamaño de arrayNum "+ arrayNum.size());
                 for(Numeros nRecuperado : arrayNum ){
                     if(!nArray.elementoComun(nRecuperado)){
                         nuevo.add(Numeros.crearNuevo(nRecuperado, nArray)) ;
-                        //System.out.println("agregando un nuevo elemento");
+
                     }
                 }
             }
